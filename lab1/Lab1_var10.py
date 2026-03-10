@@ -10,6 +10,7 @@ from sympy import (
 )
 from scipy import integrate as sci_integrate
 import matplotlib.pyplot as plt
+#
 
 
 import time
@@ -149,7 +150,7 @@ def task_6():
 
     x = symbols("x")
     expr = 1 / (1 + 2 * sin(x) ** 2)
-
+    #expr=np.cosh(3*x)**2
     def func(x):
         return 1 / (1 + 2 * sin(x) ** 2)
 
