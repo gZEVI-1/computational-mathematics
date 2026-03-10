@@ -2,15 +2,11 @@ import numpy as np
 import sympy as sp
 from sympy import (
     symbols,
-    sqrt,
     sin,
-    cos,
     simplify,
     diff,
     integrate,
-    Rational,
     pi,
-    Matrix,
 )
 from scipy import integrate as sci_integrate
 import matplotlib.pyplot as plt
@@ -34,7 +30,7 @@ def task_1():
     matrix_T = matrix.T
     print("\nТранспонированная матрица:")
     print(matrix_T)
-
+    
     det = np.linalg.det(matrix)
     print(f"\nОпределитель исходной матрицы: {det:.6f}")
 
@@ -71,7 +67,7 @@ def task_3():
     print(f"\nУпрощённое выражение: {S_func}")
     print(f"Развёрнутая форма: {sp.expand(func)}\n")
 
-    sp.pprint(S_func)
+   
 
     x_val = -1.23
     y_val = np.sqrt(8)
@@ -274,24 +270,28 @@ def task_8():
     print("\nГрафик сохранён!")
 
 
+def print_separator():
+    print("\n" + "+-" * 60 + "\n")
+
+
 def main():
-    print("\n" + "=" * 60 + "\n")
+    print_separator()
     task_1()
-    print("\n" + "=" * 60 + "\n")
+    print_separator()
     task_2()
-    print("\n" + "=" * 60 + "\n")
+    print_separator()
     task_3()
-    print("\n" + "=" * 60 + "\n")
+    print_separator()
     task_4()
-    print("\n" + "=" * 60 + "\n")
+    print_separator()
     task_5()
-    print("\n" + "=" * 60 + "\n")
+    print_separator()
     task_6()
-    print("\n" + "=" * 60 + "\n")
+    print_separator()
     task_7()
-    print("\n" + "=" * 60 + "\n")
+    print_separator()
     task_8()
-    print("\n" + "=" * 60 + "\n")
+    print_separator()
 
 
 if __name__ == "__main__":
