@@ -55,14 +55,48 @@ def task2(matrix):
     print("Норма inf (numpy):", norm_numpy, "\n")
 
 def task3(x):
-    # Для вектора, созданного в первом пункте, найти отражение 
-    # Хаусхолдера, которое обнуляет координтаы, начиная с третьей 
-    # Например, вектор (1,2,3,4,5,6,7) переводит  в вектор (1,2,0,0,0, 0,0) 
     
-    print("\nВектор-строка:", x)
-    
+    print(f"\nИсходный вектор x:\n{x.flatten()}")
 
-    print ('\n')
+    def householder_reflection(v, k):
+        
+        n = len(v)
+        
+        v = v.flatten().astype(float)
+        
+        x = v[k:].copy()
+        
+        alpha = np.linalg.norm(x)
+        if alpha < 1e-10:
+            return np.eye(n)  
+        
+        u = x.copy()
+        u[0] = u[0] - alpha  
+        
+
+        norm_u = np.linalg.norm(u)
+        if norm_u < 1e-10:
+            return np.eye(n)
+        u = u / norm_u
+        
+
+        H_sub = np.eye(len(x)) - 2 * np.outer(u, u)
+        
+        H = np.eye(n)
+        
+        H[k:, k:] = H_sub
+        
+        return H
+
+    
+    x = np.transpose(x)
+    H = householder_reflection(x, 2)
+    x_reflected = H @ x
+
+    print(f"\nH @ x = [{ ''.join('{:.6f}, '.format(val) for val in x_reflected.flatten()) }]")
+
+    print(f"\nПроверка: (H^T @ H) - E = {np.max(np.abs(H.T @ H - np.eye(7))):.3e} = {np.max(np.abs(H.T @ H - np.eye(7))):.20f}\n")
+
 
 def main():
     PS()
