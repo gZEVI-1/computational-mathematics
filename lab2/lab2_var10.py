@@ -181,11 +181,6 @@ def task4():
     print(f"\nРешение системы AX=B:\nx1 = {X[0]:.6f}, \nx2 = {X[1]:.6f}, \nx3 = {X[2]:.6f}, \nx4 = {X[3]:.6f}")
     
 
-
-
-
-
-
 def PS(msg: str|None=None):
     print( "+-" * 60  )
     if msg is not None:
